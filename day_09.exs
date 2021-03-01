@@ -35,14 +35,12 @@ defmodule Day9 do
     state
     |> score_turn
     |> pass_turn
-    |> play
   end
   # Standard turn - add a marble
   defp play(state) do
     state
     |> Map.update!(:circle, &add_marble(&1, state.next_marble))
     |> pass_turn
-    |> play
   end
 
   # Update the circle when a new marble is added.
@@ -79,6 +77,7 @@ defmodule Day9 do
     state
     |> Map.update!(:active_player, &next_player(&1, state.player_count))
     |> Map.update!(:next_marble, &(&1 + 1))
+    |> play
   end
 
   # Prepare the top score for printing to console
