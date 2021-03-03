@@ -6,3 +6,6 @@ Implement a [Zipper](https://en.wikipedia.org/wiki/Zipper_(data_structure)) for 
    
 ### Day 10   
 Simulate basic particle physics and find the convergence point of the system   
+   
+### Day 11   
+Implement a [Summed-area table](https://en.wikipedia.org/wiki/Summed-area_table) for quickly comparing every possible square subset of a large grid   
