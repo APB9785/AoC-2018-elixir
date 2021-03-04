@@ -43,6 +43,7 @@ defmodule Day11 do
     part_2(sum_area_table, size + 1, new_best)
   end
 
+  # Checks the sum of every possible square of a given size, returns the highest
   defp scan_all(sat, size, x \\ 1, y \\ 1, best \\ %{val: -99999, pos: nil})
   defp scan_all(_sat, size, _x, y, best) when y > @max_size - size + 1, do: best
   defp scan_all(sat, size, x, y, best) when x > @max_size - size + 1 do
@@ -55,6 +56,7 @@ defmodule Day11 do
     scan_all(sat, size, x + 1, y, new_best)
   end
 
+  # Quickly calculates the sum of power levels using the summed-area table
   defp calculate(sat, x, y, size) do
     a = Map.get(sat, {x - 1, y - 1}, 0)
     f_1 = Map.get(sat, {x - 1, y + size - 1}, 0)
@@ -64,6 +66,7 @@ defmodule Day11 do
     m - f_1 - f_2 + a
   end
 
+  # Summed-area table created with one pass over the grid
   def create_sat(grid, x \\ 1, y \\ 1, done \\ %{})
   def create_sat(_grid, _x, y, done) when y > @max_size, do: done
   def create_sat(grid, x, y, done) when x > @max_size, do: create_sat(grid, 1, y+1, done)
@@ -75,8 +78,10 @@ defmodule Day11 do
     create_sat(grid, x + 1, y, Map.put(done, {x, y}, val))
   end
 
+  # This formula is provided in the puzzle description for determining the power level of a cell
   def power({x, y}), do: h_digit(x*x*y + 20*x*y + 100*y + @input*x + @input*10) - 5
 
+  # Returns the "hundreds" digit of a number
   def h_digit(n) do
     case String.at(Integer.to_string(n), -3) do
       nil -> 0
