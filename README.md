@@ -9,3 +9,6 @@ Simulate basic particle physics and find the convergence point of the system
    
 ### Day 11   
 Implement a [Summed-area table](https://en.wikipedia.org/wiki/Summed-area_table) for quickly comparing every possible square subset of a large grid   
+   
+### Day 12   
+Simulate a 2D cellular automaton and find a convergence point where the rate of growth becomes constant   
